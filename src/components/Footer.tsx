@@ -51,31 +51,31 @@ export function Footer() {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-blue-900 text-white">
       {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 sm:gap-8">
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4 group">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-lg blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                <div className="relative h-12 w-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
-                  <Briefcase className="h-7 w-7 text-white" />
+                <div className="relative h-10 w-10 sm:h-12 sm:w-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center">
+                  <Briefcase className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
                 </div>
               </div>
-              <span className="text-2xl font-extrabold">TalentBridge</span>
+              <span className="text-xl sm:text-2xl font-extrabold">TalentBridge</span>
             </Link>
-            <p className="text-gray-300 mb-6 max-w-sm">
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 max-w-sm">
               The future of freelancing. Connect, collaborate, and get paid instantly with zero platform fees on the blockchain.
             </p>
             
             {/* Features */}
-            <div className="space-y-3 mb-6">
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <Shield className="h-4 w-4 text-purple-400" />
+            <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
+                <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-purple-400 flex-shrink-0" />
                 <span>Trustless Smart Contract Escrow</span>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-300">
-                <Zap className="h-4 w-4 text-blue-400" />
+              <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-300">
+                <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400 flex-shrink-0" />
                 <span>Instant Crypto Payments</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-300">

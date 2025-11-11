@@ -153,14 +153,14 @@ export function JobsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 py-8 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 py-6 sm:py-8 px-4 sm:px-6">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-10 text-center animate-pulse">
-            <div className="h-12 bg-gray-200 rounded w-1/3 mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-200 rounded w-1/2 mx-auto"></div>
+          <div className="mb-8 sm:mb-10 text-center animate-pulse">
+            <div className="h-10 sm:h-12 bg-gray-200 rounded w-2/3 sm:w-1/3 mx-auto mb-4"></div>
+            <div className="h-5 sm:h-6 bg-gray-200 rounded w-3/4 sm:w-1/2 mx-auto"></div>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <JobCardSkeleton key={i} />
             ))}
@@ -171,12 +171,12 @@ export function JobsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 py-6 sm:py-8 px-4 sm:px-6">
       <div className="container mx-auto max-w-7xl">
         {/* Header Section */}
-        <div className="mb-10 animate-fade-in-up">
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text">
+        <div className="mb-8 sm:mb-10 animate-fade-in-up">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 sm:mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text px-4">
               Find Your Next Gig
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -247,38 +247,38 @@ export function JobsPage() {
 
           {/* Search Bar */}
           <Card className="border-0 shadow-xl bg-white/90 backdrop-blur-sm">
-            <CardContent className="pt-6">
-              <div className="flex gap-4 flex-wrap">
-                <div className="flex-1 min-w-[300px] relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+            <CardContent className="pt-4 sm:pt-6">
+              <div className="flex gap-3 sm:gap-4 flex-col sm:flex-row">
+                <div className="flex-1 min-w-0 relative">
+                  <Search className="absolute left-3 sm:left-4 top-1/2 transform -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                   <Input
-                    placeholder="Search by job title, skills, or description..."
+                    placeholder="Search jobs..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-12 h-12 text-lg border-2 focus:border-purple-500"
+                    className="pl-10 sm:pl-12 h-10 sm:h-12 text-sm sm:text-lg border-2 focus:border-purple-500"
                   />
                 </div>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-12 px-8"
+                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 h-10 sm:h-12 px-6 sm:px-8 text-sm sm:text-base"
                 >
-                  <Search className="h-5 w-5 mr-2" />
-                  Search
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                  <span className="hidden sm:inline">Search</span>
                 </Button>
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1 space-y-4">
             {/* Category Filter */}
             <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm animate-fade-in-up">
               <CardHeader>
                 <div className="flex items-center gap-2">
-                  <Filter className="h-5 w-5 text-purple-600" />
-                  <CardTitle className="text-lg">Categories</CardTitle>
+                  <Filter className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+                  <CardTitle className="text-base sm:text-lg">Categories</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -286,7 +286,7 @@ export function JobsPage() {
                   variant={selectedCategory === '' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setSelectedCategory('')}
-                  className={`w-full justify-start ${selectedCategory === '' ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
+                  className={`w-full justify-start text-sm ${selectedCategory === '' ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                 >
                   All Categories
                 </Button>
@@ -296,7 +296,7 @@ export function JobsPage() {
                     variant={selectedCategory === category ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setSelectedCategory(category || '')}
-                    className={`w-full justify-start ${selectedCategory === category ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
+                    className={`w-full justify-start text-sm ${selectedCategory === category ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                   >
                     {category}
                   </Button>
@@ -308,8 +308,8 @@ export function JobsPage() {
             <Card className="border-0 shadow-lg bg-white/90 backdrop-blur-sm animate-fade-in-up delay-300">
               <CardHeader>
                 <div className="flex items-center gap-2">
-                  <Award className="h-5 w-5 text-purple-600" />
-                  <CardTitle className="text-lg">Skills</CardTitle>
+                  <Award className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600" />
+                  <CardTitle className="text-base sm:text-lg">Skills</CardTitle>
                 </div>
               </CardHeader>
               <CardContent className="space-y-2">
@@ -317,7 +317,7 @@ export function JobsPage() {
                   variant={selectedSkill === '' ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setSelectedSkill('')}
-                  className={`w-full justify-start ${selectedSkill === '' ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
+                  className={`w-full justify-start text-sm ${selectedSkill === '' ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                 >
                   All Skills
                 </Button>
@@ -327,7 +327,7 @@ export function JobsPage() {
                     variant={selectedSkill === skill ? 'default' : 'ghost'}
                     size="sm"
                     onClick={() => setSelectedSkill(skill)}
-                    className={`w-full justify-start ${selectedSkill === skill ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
+                    className={`w-full justify-start text-sm ${selectedSkill === skill ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                   >
                     {skill}
                   </Button>
@@ -353,17 +353,17 @@ export function JobsPage() {
 
           {/* Job Listings */}
           <div className="lg:col-span-3 space-y-4">
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-gray-600">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4">
+              <p className="text-sm sm:text-base text-gray-600">
                 <span className="font-semibold text-gray-900">{filteredJobs.length}</span> jobs found
               </p>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm">
-                  <Star className="h-4 w-4 mr-2" />
+              <div className="flex gap-2 w-full sm:w-auto">
+                <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">
+                  <Star className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Featured
                 </Button>
-                <Button variant="outline" size="sm">
-                  <Calendar className="h-4 w-4 mr-2" />
+                <Button variant="outline" size="sm" className="flex-1 sm:flex-none text-xs sm:text-sm">
+                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                   Latest
                 </Button>
               </div>
@@ -371,12 +371,12 @@ export function JobsPage() {
 
             {filteredJobs.length === 0 ? (
               <Card className="border-0 shadow-xl">
-                <CardContent className="py-16 text-center">
-                  <div className="mx-auto mb-4 h-16 w-16 rounded-full bg-gray-100 flex items-center justify-center">
-                    <Briefcase className="h-8 w-8 text-gray-400" />
+                <CardContent className="py-12 sm:py-16 text-center px-4">
+                  <div className="mx-auto mb-4 h-12 w-12 sm:h-16 sm:w-16 rounded-full bg-gray-100 flex items-center justify-center">
+                    <Briefcase className="h-6 w-6 sm:h-8 sm:w-8 text-gray-400" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">No jobs found</h3>
-                  <p className="text-gray-600 mb-6">
+                  <h3 className="text-lg sm:text-xl font-semibold mb-2">No jobs found</h3>
+                  <p className="text-sm sm:text-base text-gray-600 mb-6">
                     Try adjusting your filters or search criteria
                   </p>
                   <Button 

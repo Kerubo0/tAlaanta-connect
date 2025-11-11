@@ -7,43 +7,41 @@ export function HomePage() {
   return (
     <div className="min-h-screen overflow-hidden">
       {/* Hero Section with Gradient Background */}
-      <section className="relative py-32 px-4 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500 overflow-hidden">
+      <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-1000"></div>
-          <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-2000"></div>
-          <div className="absolute top-1/2 left-1/4 w-48 h-48 bg-cyan-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-rose-400 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-pulse delay-700"></div>
+          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+          <div className="absolute top-20 sm:top-40 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-1000"></div>
+          <div className="absolute -bottom-8 left-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-2000"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in-up">
-            <div className="inline-block mb-6">
-              <span className="bg-white/20 backdrop-blur-sm text-white px-6 py-2 rounded-full text-sm font-semibold border border-white/30 animate-shimmer">
+            <div className="inline-block mb-4 sm:mb-6">
+              <span className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold border border-white/30 animate-shimmer">
                 🚀 The Future of Freelancing is Here
               </span>
             </div>
-            <h1 className="text-6xl md:text-7xl font-extrabold mb-6 text-white drop-shadow-2xl animate-scale-up delay-200">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 text-white drop-shadow-2xl animate-scale-up delay-200 px-4">
               Decentralized Freelancing,<br />
               <span className="bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 text-transparent bg-clip-text animate-gradient">
                 Zero Platform Fees
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-3xl mx-auto drop-shadow-lg animate-fade-in-up delay-400">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-10 max-w-3xl mx-auto drop-shadow-lg animate-fade-in-up delay-400 px-4">
               Connect directly with clients and freelancers through Web3. 
               Trustless escrow, instant settlements, and transparent reputation.
             </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 hover:scale-110 transition-all shadow-2xl text-lg px-8 py-6 animate-slide-in-left delay-500 animate-pulse-glow" asChild>
+            <div className="flex gap-3 sm:gap-4 justify-center flex-wrap px-4">
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 hover:scale-110 transition-all shadow-2xl text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-in-left delay-500 animate-pulse-glow" asChild>
                 <Link to="/jobs">
-                  <Rocket className="mr-2 h-5 w-5 animate-wiggle" />
+                  <Rocket className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-wiggle" />
                   Find Work
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 hover:scale-110 transition-all text-lg px-8 py-6 animate-slide-in-right delay-700" asChild>
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 hover:scale-110 transition-all text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-in-right delay-700" asChild>
                 <Link to="/post-job">
-                  <Star className="mr-2 h-5 w-5 animate-heartbeat" />
+                  <Star className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-heartbeat" />
                   Post a Job
                 </Link>
               </Button>
@@ -52,8 +50,8 @@ export function HomePage() {
         </div>
 
         {/* Floating Stats */}
-        <div className="container mx-auto mt-16 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <div className="container mx-auto mt-12 sm:mt-16 relative z-10 px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
             {[
               { number: '10K+', label: 'Active Users', icon: Users },
               { number: '$2M+', label: 'Paid Out', icon: DollarSign },
@@ -62,12 +60,12 @@ export function HomePage() {
             ].map((stat, index) => (
               <div 
                 key={index} 
-                className="bg-white/10 backdrop-blur-md rounded-2xl p-6 text-center border border-white/20 hover:bg-white/20 transition-all hover:scale-110 animate-scale-up cursor-pointer group"
+                className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center border border-white/20 hover:bg-white/20 transition-all hover:scale-110 animate-scale-up cursor-pointer group"
                 style={{ animationDelay: `${800 + index * 150}ms` }}
               >
-                <stat.icon className="h-8 w-8 text-yellow-300 mx-auto mb-2 group-hover:animate-bounce-slow" />
-                <div className="text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
+                <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-300 mx-auto mb-2 group-hover:animate-bounce-slow" />
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">{stat.number}</div>
+                <div className="text-white/80 text-xs sm:text-sm">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -75,15 +73,15 @@ export function HomePage() {
       </section>
 
       {/* Features */}
-      <section className="py-20 px-4 bg-gradient-to-b from-white to-purple-50">
+      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-purple-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text animate-scale-up">
+          <div className="text-center mb-12 sm:mb-16 animate-fade-in-up px-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text animate-scale-up">
               Why TalentBridge?
             </h2>
-            <p className="text-xl text-gray-600 animate-fade-in-up delay-200">Experience the power of decentralized work</p>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 animate-fade-in-up delay-200">Experience the power of decentralized work</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4">
             {[
               {
                 icon: DollarSign,
@@ -120,11 +118,11 @@ export function HomePage() {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <CardHeader>
-                  <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${feature.color} p-3 mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-rotate-in delay-${index * 100}`}>
+                  <div className={`h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-gradient-to-br ${feature.color} p-2 sm:p-3 mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-rotate-in delay-${index * 100}`}>
                     <feature.icon className="h-full w-full text-white" />
                   </div>
-                  <CardTitle className="text-2xl group-hover:text-purple-600 transition-colors">{feature.title}</CardTitle>
-                  <CardDescription className="text-base">
+                  <CardTitle className="text-lg sm:text-xl md:text-2xl group-hover:text-purple-600 transition-colors">{feature.title}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">
                     {feature.description}
                   </CardDescription>
                 </CardHeader>
