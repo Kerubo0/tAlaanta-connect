@@ -36,6 +36,10 @@ export interface Job {
   createdAt: number;
   deadline?: number;
   proposals: number;
+  category?: string;
+  featured?: boolean;
+  duration?: string;
+  clientName?: string;
 }
 
 export interface Proposal {

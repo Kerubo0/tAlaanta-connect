@@ -24,7 +24,6 @@ interface AIJobMatchProps {
 }
 
 export function AIJobMatch({
-  jobTitle,
   jobDescription,
   requiredSkills,
   freelancerSkills,
