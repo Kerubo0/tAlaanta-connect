@@ -149,7 +149,7 @@ export function JobsPage() {
   });
 
   const allSkills = Array.from(new Set(jobs.flatMap(job => job.skills || [])));
-  const allCategories = Array.from(new Set(jobs.map(job => job.category).filter(Boolean)));
+  const allCategories = Array.from(new Set(jobs.map(job => job.category).filter(Boolean))) as string[];
 
   if (loading) {
     return (
@@ -208,7 +208,7 @@ export function JobsPage() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
-                      {jobs.reduce((sum, job) => sum + (typeof job.budget === 'number' ? job.budget : parseFloat(job.budget.toString()) || 0), 0).toFixed(2)}
+                      {jobs.reduce((sum, job) => sum + (Number(job.budget) || 0), 0).toFixed(2)}
                     </p>
                     <p className="text-sm text-gray-600">Total ETH</p>
                   </div>
@@ -295,7 +295,7 @@ export function JobsPage() {
                     key={category}
                     variant={selectedCategory === category ? 'default' : 'ghost'}
                     size="sm"
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => setSelectedCategory(category || '')}
                     className={`w-full justify-start ${selectedCategory === category ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                   >
                     {category}
