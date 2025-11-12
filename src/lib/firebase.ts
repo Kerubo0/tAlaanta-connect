@@ -11,8 +11,17 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
   databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
 };
+
+// Debug: Log Firebase config (remove after fixing)
+console.log('🔧 Firebase Config Check:', {
+  apiKeyExists: !!firebaseConfig.apiKey,
+  apiKeyLength: firebaseConfig.apiKey?.length,
+  apiKeyPrefix: firebaseConfig.apiKey?.substring(0, 10),
+  projectId: firebaseConfig.projectId,
+});
 
 // Check if Firebase is configured
 const isConfigured = firebaseConfig.apiKey && firebaseConfig.apiKey !== 'your-api-key-here';
