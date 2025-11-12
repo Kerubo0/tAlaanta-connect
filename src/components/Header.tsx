@@ -1,15 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ConnectWallet } from './ConnectWallet';
-import { Briefcase, Menu, X, Bell } from 'lucide-react';
+import { Briefcase, Menu, X, Bell, LogOut, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { signOut } from '../lib/auth';
 
 export function Header() {
   const location = useLocation();
+  const { user, userProfile } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleSignOut = async () => {
+    await signOut();
+    setUserMenuOpen(false);
+  };
 
   const navLinks = [
     { to: '/jobs', label: 'Find Work' },
@@ -62,6 +71,57 @@ export function Header() {
               <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
             </Button>
             <ConnectWallet />
+            
+            {user && userProfile ? (
+              <div className="relative">
+                <button
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors"
+                >
+                  <div className="h-8 w-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-medium">
+                    {userProfile.displayName.charAt(0).toUpperCase()}
+                  </div>
+                  <span className="hidden xl:block font-medium text-sm">{userProfile.displayName}</span>
+                </button>
+                
+                {userMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
+                    <div className="px-4 py-2 border-b border-gray-200">
+                      <p className="text-sm font-medium text-gray-900">{userProfile.displayName}</p>
+                      <p className="text-xs text-gray-500 capitalize">{userProfile.role}</p>
+                    </div>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setUserMenuOpen(false)}
+                      className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-purple-50"
+                    >
+                      <User size={16} />
+                      My Profile
+                    </Link>
+                    <button
+                      onClick={handleSignOut}
+                      className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                    >
+                      <LogOut size={16} />
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <Link to="/signin">
+                  <Button variant="ghost" size="sm">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link to="/signup">
+                  <Button size="sm" className="bg-gradient-to-r from-purple-600 to-blue-600">
+                    Sign Up
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -106,6 +166,35 @@ export function Header() {
                   <span className="absolute top-2 right-2 h-2 w-2 bg-red-500 rounded-full"></span>
                 </Button>
                 <ConnectWallet />
+                
+                {user && userProfile ? (
+                  <>
+                    <div className="px-4 py-2 border-t border-gray-200">
+                      <p className="text-sm font-medium text-gray-900">{userProfile.displayName}</p>
+                      <p className="text-xs text-gray-500 capitalize">{userProfile.role}</p>
+                    </div>
+                    <button
+                      onClick={handleSignOut}
+                      className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
+                    >
+                      <LogOut size={16} />
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <div className="space-y-2">
+                    <Link to="/signin" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full">
+                        Sign In
+                      </Button>
+                    </Link>
+                    <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
+                      <Button size="sm" className="w-full bg-gradient-to-r from-purple-600 to-blue-600">
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </nav>
           </div>
