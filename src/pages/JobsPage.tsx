@@ -208,9 +208,9 @@ export function JobsPage() {
                   </div>
                   <div>
                     <p className="text-2xl font-bold text-gray-900">
-                      {jobs.reduce((sum, job) => sum + (Number(job.budget) || 0), 0).toFixed(2)}
+                      ${jobs.reduce((sum, job) => sum + (job.budget || 0), 0).toLocaleString()}
                     </p>
-                    <p className="text-sm text-gray-600">Total ETH</p>
+                    <p className="text-sm text-gray-600">Total Budget</p>
                   </div>
                 </div>
               </CardContent>
@@ -295,7 +295,7 @@ export function JobsPage() {
                     key={category}
                     variant={selectedCategory === category ? 'default' : 'ghost'}
                     size="sm"
-                    onClick={() => setSelectedCategory(category || '')}
+                    onClick={() => setSelectedCategory(category ?? '')}
                     className={`w-full justify-start text-sm ${selectedCategory === category ? 'bg-gradient-to-r from-purple-600 to-blue-600' : ''}`}
                   >
                     {category}
