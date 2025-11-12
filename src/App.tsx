@@ -14,6 +14,7 @@ const JobDetailPage = lazy(() => import('./pages/JobDetailPage').then(m => ({ de
 const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ default: m.DashboardPage })));
 const PostJobPage = lazy(() => import('./pages/PostJobPage').then(m => ({ default: m.PostJobPage })));
 const MessagesPage = lazy(() => import('./pages/MessagesPage').then(m => ({ default: m.MessagesPage })));
+const ReputationPage = lazy(() => import('./pages/ReputationPage').then(m => ({ default: m.ReputationPage })));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -43,6 +44,8 @@ function App() {
                   <Route path="/dashboard" element={<DashboardPage />} />
                   <Route path="/post-job" element={<PostJobPage />} />
                   <Route path="/messages" element={<MessagesPage />} />
+                  <Route path="/reputation" element={<ReputationPage />} />
+                  <Route path="/reputation/:address" element={<ReputationPage />} />
                 </Routes>
               </Suspense>
             </main>
