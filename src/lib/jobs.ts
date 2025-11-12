@@ -64,13 +64,20 @@ export interface JobPosting {
 export async function createJob(jobData: Omit<JobPosting, 'id' | 'createdAt' | 'updatedAt' | 'status'>): Promise<string> {
   if (!db) throw new Error('Firebase not initialized');
 
-  const job: Omit<JobPosting, 'id'> = {
+  const job: any = {
     ...jobData,
     status: 'open',
     applicants: [],
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   };
+
+  // Remove undefined fields to avoid Firestore errors
+  Object.keys(job).forEach(key => {
+    if (job[key] === undefined) {
+      delete job[key];
+    }
+  });
 
   const docRef = await addDoc(collection(db as Firestore, 'jobs'), job);
   return docRef.id;
