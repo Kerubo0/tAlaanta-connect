@@ -5,8 +5,8 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { createJob, JobType, ExperienceLevel } from '../lib/jobs';
+import { useAuth } from '../context/AuthContext-supabase';
+import { createJob, JobType, ExperienceLevel } from '../lib/jobs-supabase';
 import { Briefcase, DollarSign, Clock, Users, X } from 'lucide-react';
 
 const categories = [
@@ -76,15 +76,15 @@ export default function PostJobPage() {
         category: formData.category,
         skills: formData.skills,
         budget: parseFloat(formData.budget),
-        jobType: formData.jobType,
-        experienceLevel: formData.experienceLevel,
+        job_type: formData.jobType,
+        experience_level: formData.experienceLevel,
         duration: formData.duration,
         deadline: formData.deadline,
         location: formData.location,
         remote: formData.remote,
-        clientId: userProfile.uid,
-        clientName: userProfile.displayName,
-        clientAddress: userProfile.walletAddress,
+        client_id: userProfile.uid,
+        client_name: userProfile.display_name,
+        client_address: userProfile.wallet_address,
       });
 
       navigate('/dashboard');

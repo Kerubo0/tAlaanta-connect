@@ -6,7 +6,7 @@ import { config } from './lib/wagmi';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { AIChatbot } from './components/AIChatbot';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext-supabase';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })));

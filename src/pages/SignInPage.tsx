@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signIn } from '../lib/auth';
+import { signIn } from '../lib/auth-supabase';
 import { LogIn } from 'lucide-react';
 
 export default function SignInPage() {

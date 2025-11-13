@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { signUp, UserRole } from '../lib/auth';
+import { signUp, UserRole } from '../lib/auth-supabase';
 import { UserCircle, Briefcase, Users } from 'lucide-react';
 
 export default function SignUpPage() {

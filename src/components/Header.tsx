@@ -4,8 +4,8 @@ import { Briefcase, Menu, X, Bell, LogOut, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { signOut } from '../lib/auth';
+import { useAuth } from '../context/AuthContext-supabase';
+import { signOut } from '../lib/auth-supabase';
 
 export function Header() {
   const location = useLocation();
