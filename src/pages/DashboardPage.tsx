@@ -3,7 +3,7 @@
  * Role-based dashboard (Freelancer vs Client)
  */
 
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext-supabase';
 import { Navigate } from 'react-router-dom';
 import FreelancerDashboard from '../components/FreelancerDashboard';
 import ClientDashboard from '../components/ClientDashboard';

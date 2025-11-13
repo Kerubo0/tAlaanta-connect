@@ -4,8 +4,8 @@
  */
 
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { getClientJobs, JobPosting } from '../lib/jobs';
+import { useAuth } from '../context/AuthContext-supabase';
+import { getClientJobs, JobPosting } from '../lib/jobs-supabase';
 import { Link } from 'react-router-dom';
 import { Plus, Briefcase, Clock, CheckCircle, XCircle } from 'lucide-react';
 

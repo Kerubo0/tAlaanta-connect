@@ -5,8 +5,8 @@
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { getJob, applyToJob, JobPosting } from '../lib/jobs';
+import { useAuth } from '../context/AuthContext-supabase';
+import { getJob, applyToJob, JobPosting } from '../lib/jobs-supabase';
 import { 
   Briefcase, 
   DollarSign, 
