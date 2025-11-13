@@ -5,8 +5,10 @@
  */
 
 import { ethers } from 'ethers';
-import { db } from './firebase';
-import { collection, addDoc, query, where, getDocs, orderBy, Firestore } from 'firebase/firestore';
+// TODO: Migrate to Supabase
+// import { db } from './firebase';
+// import { collection, addDoc, query, where, getDocs, orderBy, Firestore } from 'firebase/firestore';
+import { supabase } from './supabase';
 
 // Aqua Protocol Schema Version
 const AQUA_VERSION = "https://aqua-protocol.org/docs/v3/schema_2 | SHA256 | Method: scalar";
@@ -286,12 +288,14 @@ export async function createVerifiableReview(
     createdAt: Date.now(),
   };
   
-  // Step 5: Store in Firebase
-  if (!db) throw new Error('Firebase not initialized');
-  const reviewsRef = collection(db as Firestore, 'aqua_reviews');
-  const docRef = await addDoc(reviewsRef, verifiableReview);
+  // Step 5: Store in Supabase (TODO: implement)
+  // TODO: Migrate to Supabase aqua_reviews table
+  // if (!db) throw new Error('Firebase not initialized');
+  // const reviewsRef = collection(db as Firestore, 'aqua_reviews');
+  // const docRef = await addDoc(reviewsRef, verifiableReview);
+  // verifiableReview.id = docRef.id;
   
-  verifiableReview.id = docRef.id;
+  verifiableReview.id = 'temp-' + Date.now(); // Temporary until Supabase migration
   
   return verifiableReview;
 }
@@ -357,6 +361,8 @@ export async function verifyReviewChain(review: VerifiableReview): Promise<boole
  * Get reputation score for an address
  */
 export async function getReputationScore(address: string): Promise<ReputationScore> {
+  // TODO: Migrate to Supabase
+  /*
   if (!db) throw new Error('Firebase not initialized');
   const reviewsRef = collection(db as Firestore, 'aqua_reviews');
   const q = query(
@@ -364,11 +370,24 @@ export async function getReputationScore(address: string): Promise<ReputationSco
     where('revieweeAddress', '==', address.toLowerCase()),
     orderBy('createdAt', 'desc')
   );
+  */
   
+  // Temporary: Return empty reputation
+  return {
+    address: address.toLowerCase(),
+    totalReviews: 0,
+    averageRating: 0,
+    verifiedReviews: 0,
+    completedJobs: 0,
+    reputationLevel: 'New',
+    trustScore: 0,
+  };
+  
+  /* TODO: Migrate to Supabase
   const snapshot = await getDocs(q);
   const reviews = snapshot.docs.map(doc => ({
     id: doc.id,
-    ...doc.data(),
+    ...doc.data()
   })) as VerifiableReview[];
   
   // Verify all reviews
@@ -391,8 +410,15 @@ export async function getReputationScore(address: string): Promise<ReputationSco
     ? Math.round((verifiedReviews.length / reviews.length) * 100)
     : 0;
   
-  // Aggregate endorsed skills
-  const skillsEndorsed: { [skill: string]: number } = {};
+  // Determine reputation level based on verified reviews and trust score
+  let reputationLevel: ReputationLevel = 'New';
+  if (verifiedReviews.length >= 50 && trustScore >= 90) reputationLevel = 'Legendary';
+  else if (verifiedReviews.length >= 25 && trustScore >= 85) reputationLevel = 'Elite';
+  else if (verifiedReviews.length >= 10 && trustScore >= 80) reputationLevel = 'Trusted';
+  else if (verifiedReviews.length >= 3 && trustScore >= 70) reputationLevel = 'Rising Star';
+  
+  // Get skills that have been endorsed
+  const skillsEndorsed: Record<string, number> = {};
   verifiedReviews.forEach(review => {
     review.skillsVerified.forEach(skill => {
       skillsEndorsed[skill] = (skillsEndorsed[skill] || 0) + 1;
@@ -415,11 +441,36 @@ export async function getReputationScore(address: string): Promise<ReputationSco
     recentReviews: verifiedReviews.slice(0, 5),
     onChainProof,
   };
+  */
 }
 
 /**
  * Get all reviews for a specific address
  */
+export async function getVerifiedReviews(address: string): Promise<VerifiableReview[]> {
+  // TODO: Migrate to Supabase
+  return [];
+  /*
+  if (!db) throw new Error('Firebase not initialized');
+  const reviewsRef = collection(db as Firestore, 'aqua_reviews');
+  const q = query(
+    reviewsRef,
+    where('revieweeAddress', '==', address.toLowerCase()),
+    orderBy('createdAt', 'desc')
+  );
+  
+  const snapshot = await getDocs(q);
+  const reviews = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  })) as VerifiableReview[];
+  
+  return reviews;
+  */
+}
+
+// Duplicate function - removing
+/*
 export async function getVerifiedReviews(address: string): Promise<VerifiableReview[]> {
   if (!db) throw new Error('Firebase not initialized');
   const reviewsRef = collection(db as Firestore, 'aqua_reviews');

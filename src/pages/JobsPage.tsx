@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '@/lib/firebase';
+// TODO: Migrate to Supabase
+// import { collection, query, where, getDocs } from 'firebase/firestore';
+// import { db } from '@/lib/firebase';
 import { Job } from '@/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
