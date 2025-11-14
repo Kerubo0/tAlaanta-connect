@@ -74,7 +74,7 @@ export default function FreelancerDashboard() {
         </div>
         <div className="flex items-center gap-1">
           <Briefcase size={16} />
-          <span className="capitalize">{job.experienceLevel}</span>
+          <span className="capitalize">{job.experience_level}</span>
         </div>
         {job.location && (
           <div className="flex items-center gap-1">
@@ -86,7 +86,7 @@ export default function FreelancerDashboard() {
 
       <div className="flex items-center justify-between pt-4 border-t border-gray-200">
         <div className="text-sm text-gray-600">
-          Posted by <span className="font-medium">{job.clientName}</span>
+          Posted by <span className="font-medium">{job.client_name}</span>
         </div>
         <Link
           to={`/job/${job.id}`}
@@ -111,7 +111,7 @@ export default function FreelancerDashboard() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">
-          Welcome back, {userProfile?.displayName}!
+          Welcome back, {userProfile?.display_name}!
         </h1>
         <p className="text-gray-600 mt-2">Find your next opportunity</p>
       </div>

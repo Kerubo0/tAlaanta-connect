@@ -20,20 +20,18 @@ const isConfigured = supabaseUrl && supabaseAnonKey &&
   supabaseUrl !== 'your-supabase-url' && 
   supabaseAnonKey !== 'your-supabase-anon-key';
 
-let supabase: ReturnType<typeof createClient> | undefined;
-
-if (isConfigured) {
-  supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    auth: {
-      autoRefreshToken: true,
-      persistSession: true,
-      detectSessionInUrl: true,
-    },
-  });
-  console.log('✅ Supabase initialized successfully');
-} else {
-  console.warn('⚠️ Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file');
+if (!isConfigured) {
+  throw new Error('⚠️ Supabase not configured. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file');
 }
 
-export { supabase };
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+  },
+});
+
+console.log('✅ Supabase initialized successfully');
+
 export default supabase;

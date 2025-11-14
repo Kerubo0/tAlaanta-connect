@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext-supabase';
 import { getClientJobs, JobPosting } from '../lib/jobs-supabase';
 import { Link } from 'react-router-dom';
-import { Plus, Briefcase, Clock, CheckCircle, XCircle } from 'lucide-react';
+import { Plus, Briefcase, Clock, CheckCircle, XCircle, Users } from 'lucide-react';
 
 export default function ClientDashboard() {
   const { userProfile } = useAuth();
@@ -59,7 +59,7 @@ export default function ClientDashboard() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900">
-          Welcome back, {userProfile?.displayName}!
+          Welcome back, {userProfile?.display_name}!
         </h1>
         <p className="text-gray-600 mt-2">Manage your job postings and find the best talent</p>
       </div>
@@ -132,16 +132,30 @@ export default function ClientDashboard() {
                     <p className="text-gray-600 mb-3 line-clamp-2">{job.description}</p>
                     <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                       <span>💰 ${job.budget}</span>
-                      <span>📊 {job.applicants?.length || 0} applicants</span>
-                      <span>📅 {new Date(job.createdAt?.seconds * 1000 || Date.now()).toLocaleDateString()}</span>
+                      <span className="flex items-center gap-1">
+                        <Users size={16} />
+                        {job.applicants?.length || 0} applicants
+                      </span>
+                      <span>📅 {new Date(job.created_at).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  <Link
-                    to={`/job/${job.id}`}
-                    className="ml-4 px-4 py-2 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition-colors"
-                  >
-                    View Details
-                  </Link>
+                  <div className="ml-4 flex gap-2">
+                    {job.applicants && job.applicants.length > 0 && (
+                      <Link
+                        to={`/job/${job.id}/applications`}
+                        className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-2"
+                      >
+                        <Users size={16} />
+                        View Applications
+                      </Link>
+                    )}
+                    <Link
+                      to={`/job/${job.id}`}
+                      className="px-4 py-2 border border-purple-600 text-purple-600 rounded-lg hover:bg-purple-50 transition-colors"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}

@@ -95,7 +95,7 @@ export default function JobDetailPage() {
     );
   }
 
-  const isOwnJob = userProfile?.uid === job.clientId;
+  const isOwnJob = userProfile?.uid === job.client_id;
   const isFreelancer = userProfile?.role === 'freelancer';
 
   return (
@@ -121,11 +121,11 @@ export default function JobDetailPage() {
               <h1 className="text-3xl font-bold text-gray-900 mb-4">{job.title}</h1>
               <div className="flex items-center gap-2 text-gray-600">
                 <Users size={18} />
-                <span>Posted by {job.clientName}</span>
+                <span>Posted by {job.client_name}</span>
                 <span className="text-gray-400">•</span>
                 <Calendar size={18} />
                 <span>
-                  {new Date(job.createdAt?.seconds * 1000 || Date.now()).toLocaleDateString()}
+                  {new Date(job.created_at).toLocaleDateString()}
                 </span>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default function JobDetailPage() {
                 <span className="text-sm">Budget</span>
               </div>
               <div className="text-2xl font-bold text-gray-900">${job.budget}</div>
-              <div className="text-xs text-gray-500 capitalize">{job.jobType}</div>
+              <div className="text-xs text-gray-500 capitalize">{job.job_type}</div>
             </div>
             <div>
               <div className="flex items-center gap-2 text-gray-600 mb-1">
@@ -153,7 +153,7 @@ export default function JobDetailPage() {
                 <Briefcase size={18} />
                 <span className="text-sm">Experience</span>
               </div>
-              <div className="text-lg font-semibold text-gray-900 capitalize">{job.experienceLevel}</div>
+              <div className="text-lg font-semibold text-gray-900 capitalize">{job.experience_level}</div>
             </div>
             <div>
               <div className="flex items-center gap-2 text-gray-600 mb-1">
@@ -230,15 +230,30 @@ export default function JobDetailPage() {
             <h2 className="text-xl font-bold text-gray-900 mb-4">
               Manage Job
             </h2>
-            <p className="text-gray-600 mb-4">
-              You have {job.applicants?.length || 0} applicant(s) for this job.
-            </p>
-            <button
-              onClick={() => navigate('/dashboard')}
-              className="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
-            >
-              Back to Dashboard
-            </button>
+            <div className="flex items-center gap-3 mb-6">
+              <Users className="text-purple-600" size={24} />
+              <p className="text-gray-700 text-lg">
+                <span className="font-bold">{job.applicants?.length || 0}</span> applicant(s) for this job
+              </p>
+            </div>
+            
+            <div className="flex gap-3">
+              {job.applicants && job.applicants.length > 0 && (
+                <button
+                  onClick={() => navigate(`/job/${job.id}/applications`)}
+                  className="flex-1 px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors flex items-center justify-center gap-2"
+                >
+                  <Users size={20} />
+                  View Applications
+                </button>
+              )}
+              <button
+                onClick={() => navigate('/dashboard')}
+                className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Back to Dashboard
+              </button>
+            </div>
           </div>
         )}
       </div>

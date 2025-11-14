@@ -14,6 +14,7 @@ const JobsPage = lazy(() => import('./pages/JobsPage').then(m => ({ default: m.J
 const JobDetailPage = lazy(() => import('./pages/JobDetailPage').then(m => ({ default: m.default })));
 const DashboardPage = lazy(() => import('./pages/DashboardPage').then(m => ({ default: m.default })));
 const PostJobPage = lazy(() => import('./pages/PostJobPage').then(m => ({ default: m.default })));
+const JobApplicationsPage = lazy(() => import('./pages/JobApplicationsPage').then(m => ({ default: m.default })));
 const MessagesPage = lazy(() => import('./pages/MessagesPage').then(m => ({ default: m.MessagesPage })));
 const ReputationPage = lazy(() => import('./pages/ReputationPage').then(m => ({ default: m.ReputationPage })));
 const SignUpPage = lazy(() => import('./pages/SignUpPage').then(m => ({ default: m.default })));
@@ -47,6 +48,7 @@ function App() {
                     <Route path="/signin" element={<SignInPage />} />
                     <Route path="/jobs" element={<JobsPage />} />
                     <Route path="/job/:id" element={<JobDetailPage />} />
+                    <Route path="/job/:id/applications" element={<JobApplicationsPage />} />
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/post-job" element={<PostJobPage />} />
                     <Route path="/messages" element={<MessagesPage />} />

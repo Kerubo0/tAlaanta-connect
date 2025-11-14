@@ -79,15 +79,15 @@ export function Header() {
                   className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-purple-50 transition-colors"
                 >
                   <div className="h-8 w-8 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center text-white font-medium">
-                    {userProfile.displayName.charAt(0).toUpperCase()}
+                    {userProfile.display_name?.charAt(0).toUpperCase() || 'U'}
                   </div>
-                  <span className="hidden xl:block font-medium text-sm">{userProfile.displayName}</span>
+                  <span className="hidden xl:block font-medium text-sm">{userProfile.display_name}</span>
                 </button>
                 
                 {userMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
                     <div className="px-4 py-2 border-b border-gray-200">
-                      <p className="text-sm font-medium text-gray-900">{userProfile.displayName}</p>
+                      <p className="text-sm font-medium text-gray-900">{userProfile.display_name}</p>
                       <p className="text-xs text-gray-500 capitalize">{userProfile.role}</p>
                     </div>
                     <Link
@@ -170,7 +170,7 @@ export function Header() {
                 {user && userProfile ? (
                   <>
                     <div className="px-4 py-2 border-t border-gray-200">
-                      <p className="text-sm font-medium text-gray-900">{userProfile.displayName}</p>
+                      <p className="text-sm font-medium text-gray-900">{userProfile.display_name}</p>
                       <p className="text-xs text-gray-500 capitalize">{userProfile.role}</p>
                     </div>
                     <button
