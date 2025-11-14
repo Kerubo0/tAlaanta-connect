@@ -50,13 +50,13 @@ export function MessagesPage() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isConnected && address && rtdb) {
+    if (isConnected && address) {
       loadConversations();
     }
   }, [isConnected, address]);
 
   useEffect(() => {
-    if (selectedConversation && rtdb) {
+    if (selectedConversation) {
       loadMessages(selectedConversation);
     }
   }, [selectedConversation]);
@@ -146,7 +146,7 @@ export function MessagesPage() {
   };
 
   const handleSendMessage = async () => {
-    if (!newMessage.trim() || !selectedConversation || !address || !rtdb) return;
+    if (!newMessage.trim() || !selectedConversation || !address) return;
 
     const newMsg: Message = {
       id: Date.now().toString(),

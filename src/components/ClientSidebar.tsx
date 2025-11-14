@@ -11,7 +11,6 @@ import {
   CreditCard, 
   FileText,
   Settings,
-  ChevronLeft,
   Menu,
   X
 } from 'lucide-react';

@@ -8,7 +8,7 @@ import { ethers } from 'ethers';
 // TODO: Migrate to Supabase
 // import { db } from './firebase';
 // import { collection, addDoc, query, where, getDocs, orderBy, Firestore } from 'firebase/firestore';
-import { supabase } from './supabase';
+// Supabase will be used for storing reviews in the future
 
 // Aqua Protocol Schema Version
 const AQUA_VERSION = "https://aqua-protocol.org/docs/v3/schema_2 | SHA256 | Method: scalar";
@@ -378,9 +378,11 @@ export async function getReputationScore(address: string): Promise<ReputationSco
     totalReviews: 0,
     averageRating: 0,
     verifiedReviews: 0,
-    completedJobs: 0,
-    reputationLevel: 'New',
+    unverifiedReviews: 0,
     trustScore: 0,
+    skillsEndorsed: {},
+    recentReviews: [],
+    onChainProof: false,
   };
   
   /* TODO: Migrate to Supabase
@@ -447,7 +449,7 @@ export async function getReputationScore(address: string): Promise<ReputationSco
 /**
  * Get all reviews for a specific address
  */
-export async function getVerifiedReviews(address: string): Promise<VerifiableReview[]> {
+export async function getVerifiedReviews(_address: string): Promise<VerifiableReview[]> {
   // TODO: Migrate to Supabase
   return [];
   /*
