@@ -16,8 +16,8 @@ module.exports = {
   networks: {
     // Base Sepolia Testnet
     baseSepolia: {
-      url: process.env.BASE_SEPOLIA_RPC_URL || "https://sepolia.base.org",
-      accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      url: "https://sepolia.base.org",
+      accounts: ["0x0e1f6d874c31eb5c0100090afa6b578bdeb39d8a2510f431fbbee0c0408c59e3"],
       chainId: 84532,
       gasPrice: "auto"
     },
@@ -28,9 +28,18 @@ module.exports = {
   },
   etherscan: {
     apiKey: {
+      base: process.env.BASESCAN_API_KEY || "",
       baseSepolia: process.env.BASESCAN_API_KEY || ""
     },
     customChains: [
+      {
+        network: "base",
+        chainId: 8453,
+        urls: {
+          apiURL: "https://api.basescan.org/api",
+          browserURL: "https://basescan.org"
+        }
+      },
       {
         network: "baseSepolia",
         chainId: 84532,
