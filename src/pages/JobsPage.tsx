@@ -505,7 +505,7 @@ export function JobsPage() {
                           asChild 
                           className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
                         >
-                          <Link to={`/jobs/${job.id}`}>
+                          <Link to={`/job/${job.id}`}>
                             <Eye className="h-4 w-4 mr-2" />
                             View Details
                           </Link>

@@ -28,7 +28,6 @@ import {
   Award,
   Target,
   Zap,
-  Heart,
   Share2,
   Bookmark,
   TrendingUp,
