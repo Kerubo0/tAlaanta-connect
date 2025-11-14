@@ -1,128 +1,182 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Shield, Zap, Globe, DollarSign, Rocket, Star, Users, TrendingUp } from 'lucide-react';
+import { Shield, DollarSign, Rocket, Star, Users, Heart, Smile, Coffee, Award, Target, CheckCircle, ArrowRight, Sparkles, MessageCircle } from 'lucide-react';
 
 export function HomePage() {
   return (
-    <div className="min-h-screen overflow-hidden">
-      {/* Hero Section with Gradient Background */}
-      <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500 overflow-hidden">
+    <div className="min-h-screen overflow-hidden bg-white">
+      {/* Hero Section with Human Touch */}
+      <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-br from-orange-50 via-rose-50 to-purple-50 overflow-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
-          <div className="absolute top-20 sm:top-40 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-1000"></div>
-          <div className="absolute -bottom-8 left-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float delay-2000"></div>
+          <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-48 sm:w-72 h-48 sm:h-72 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-float"></div>
+          <div className="absolute top-20 sm:top-40 right-5 sm:right-10 w-48 sm:w-72 h-48 sm:h-72 bg-rose-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-float delay-1000"></div>
+          <div className="absolute -bottom-8 left-1/2 w-48 sm:w-72 h-48 sm:h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-float delay-2000"></div>
+          {/* Decorative dots */}
+          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-orange-400 rounded-full"></div>
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-rose-400 rounded-full"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-purple-400 rounded-full"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
           <div className="animate-fade-in-up">
-            <div className="inline-block mb-4 sm:mb-6">
-              <span className="bg-white/20 backdrop-blur-sm text-white px-4 sm:px-6 py-2 rounded-full text-xs sm:text-sm font-semibold border border-white/30 animate-shimmer">
-                🚀 The Future of Freelancing is Here
+            {/* Human Touch Badge */}
+            <div className="inline-flex items-center gap-2 mb-6 sm:mb-8">
+              <span className="bg-gradient-to-r from-orange-500 to-rose-500 text-white px-6 py-2.5 rounded-full text-sm font-semibold shadow-lg flex items-center gap-2">
+                <Heart className="w-4 h-4 animate-heartbeat" fill="currentColor" />
+                Made with Love for Freelancers
+                <Sparkles className="w-4 h-4" />
               </span>
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold mb-4 sm:mb-6 text-white drop-shadow-2xl animate-scale-up delay-200 px-4">
-              Decentralized Freelancing,<br />
-              <span className="bg-gradient-to-r from-yellow-300 via-pink-300 to-purple-300 text-transparent bg-clip-text animate-gradient">
-                Zero Platform Fees
+            
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 sm:mb-8 text-gray-900 leading-tight px-4">
+              Your Talent Deserves <br />
+              <span className="bg-gradient-to-r from-orange-500 via-rose-500 to-purple-600 text-transparent bg-clip-text">
+                Freedom & Fair Pay
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 sm:mb-10 max-w-3xl mx-auto drop-shadow-lg animate-fade-in-up delay-400 px-4">
-              Connect directly with clients and freelancers through Web3. 
-              Trustless escrow, instant settlements, and transparent reputation.
+            
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-10 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
+              Connect with amazing clients, work on exciting projects, and keep 100% of what you earn. 
+              <span className="block mt-2 text-orange-600 font-semibold">Because your skills matter. ❤️</span>
             </p>
-            <div className="flex gap-3 sm:gap-4 justify-center flex-wrap px-4">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 hover:scale-110 transition-all shadow-2xl text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-in-left delay-500 animate-pulse-glow" asChild>
-                <Link to="/jobs">
-                  <Rocket className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-wiggle" />
-                  Find Work
+            
+            <div className="flex gap-4 justify-center flex-wrap px-4">
+              <Button 
+                size="lg" 
+                className="bg-gradient-to-r from-orange-500 to-rose-500 text-white hover:from-orange-600 hover:to-rose-600 shadow-xl hover:shadow-2xl hover:scale-105 transition-all px-8 py-6 text-lg group"
+                asChild
+              >
+                <Link to="/jobs" className="flex items-center gap-2">
+                  <Rocket className="w-5 h-5 group-hover:animate-bounce" />
+                  Start Your Journey
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-600 hover:scale-110 transition-all text-sm sm:text-base lg:text-lg px-6 sm:px-8 py-4 sm:py-6 animate-slide-in-right delay-700" asChild>
-                <Link to="/post-job">
-                  <Star className="mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-heartbeat" />
-                  Post a Job
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white shadow-lg hover:shadow-xl hover:scale-105 transition-all px-8 py-6 text-lg group"
+                asChild
+              >
+                <Link to="/post-job" className="flex items-center gap-2">
+                  <Target className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                  Hire Amazing Talent
                 </Link>
               </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>No Platform Fees</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>Secure Escrow</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>10K+ Happy Users</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Floating Stats */}
-        <div className="container mx-auto mt-12 sm:mt-16 relative z-10 px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto">
+        {/* Floating Stats with Human Touch */}
+        <div className="container mx-auto mt-16 sm:mt-20 relative z-10 px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {[
-              { number: '10K+', label: 'Active Users', icon: Users },
-              { number: '$2M+', label: 'Paid Out', icon: DollarSign },
-              { number: '5K+', label: 'Jobs Posted', icon: TrendingUp },
-              { number: '0%', label: 'Platform Fee', icon: Star },
+              { number: '10,000+', label: 'Talented Freelancers', icon: Users, emoji: '👥', color: 'from-blue-500 to-cyan-500' },
+              { number: '$2M+', label: 'Earned by Freelancers', icon: DollarSign, emoji: '💰', color: 'from-green-500 to-emerald-500' },
+              { number: '5,000+', label: 'Projects Completed', icon: Award, emoji: '🎯', color: 'from-purple-500 to-pink-500' },
+              { number: '4.9/5', label: 'Average Rating', icon: Star, emoji: '⭐', color: 'from-orange-500 to-rose-500' },
             ].map((stat, index) => (
               <div 
                 key={index} 
-                className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center border border-white/20 hover:bg-white/20 transition-all hover:scale-110 animate-scale-up cursor-pointer group"
+                className="bg-white rounded-2xl p-6 text-center shadow-xl hover:shadow-2xl transition-all hover:scale-105 border-2 border-gray-100 group cursor-pointer"
                 style={{ animationDelay: `${800 + index * 150}ms` }}
               >
-                <stat.icon className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-300 mx-auto mb-2 group-hover:animate-bounce-slow" />
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">{stat.number}</div>
-                <div className="text-white/80 text-xs sm:text-sm">{stat.label}</div>
+                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{stat.emoji}</div>
+                <div className={`text-3xl font-bold bg-gradient-to-r ${stat.color} text-transparent bg-clip-text mb-2`}>
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 text-sm font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features */}
-      <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-purple-50">
+      {/* Features with Human Touch */}
+      <section className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-12 sm:mb-16 animate-fade-in-up px-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-purple-600 to-blue-600 text-transparent bg-clip-text animate-scale-up">
-              Why TalentBridge?
+          <div className="text-center mb-16 animate-fade-in-up px-4">
+            <div className="inline-block mb-4">
+              <span className="text-orange-600 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 justify-center">
+                <Sparkles className="w-4 h-4" />
+                Why Freelancers Love Us
+              </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 text-gray-900">
+              Work on Your Terms 🎨
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 animate-fade-in-up delay-200">Experience the power of decentralized work</p>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              We built this platform thinking about you—the talented person behind the screen
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
             {[
               {
-                icon: DollarSign,
-                title: 'Zero Fees',
-                description: 'No platform fees. Keep 100% of your earnings.',
-                color: 'from-green-400 to-emerald-600',
-                bgColor: 'bg-green-50',
+                icon: Heart,
+                title: 'Keep 100% of Earnings',
+                description: 'Every penny you earn is yours. No hidden fees, no surprises. Just fair pay for great work.',
+                color: 'from-red-500 to-rose-500',
+                bgColor: 'bg-rose-50',
+                emoji: '💰',
               },
               {
                 icon: Shield,
-                title: 'Trustless Escrow',
-                description: 'Smart contracts protect both parties with milestone-based payments.',
-                color: 'from-blue-400 to-indigo-600',
+                title: 'Safe & Secure Payments',
+                description: 'Smart contracts protect your work. Get paid when you deliver, every single time.',
+                color: 'from-blue-500 to-cyan-500',
                 bgColor: 'bg-blue-50',
+                emoji: '🛡️',
               },
               {
-                icon: Zap,
-                title: 'Instant Settlement',
-                description: 'Get paid immediately when milestones are approved.',
-                color: 'from-yellow-400 to-orange-600',
-                bgColor: 'bg-yellow-50',
+                icon: Coffee,
+                title: 'Work-Life Balance',
+                description: 'Choose projects you love. Set your own hours. Spend more time with family and friends.',
+                color: 'from-amber-500 to-orange-500',
+                bgColor: 'bg-amber-50',
+                emoji: '☕',
               },
               {
-                icon: Globe,
-                title: 'On-Chain Reputation',
-                description: 'Build a verifiable reputation that follows you everywhere.',
-                color: 'from-purple-400 to-pink-600',
+                icon: Smile,
+                title: 'Build Your Reputation',
+                description: 'Every great project adds to your blockchain-verified reputation. Your skills speak for themselves.',
+                color: 'from-purple-500 to-pink-500',
                 bgColor: 'bg-purple-50',
+                emoji: '⭐',
               },
             ].map((feature, index) => (
               <Card 
                 key={index} 
-                className={`border-0 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 ${feature.bgColor} animate-slide-in-left overflow-hidden group cursor-pointer`}
+                className={`border-2 border-gray-200 shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 ${feature.bgColor} group cursor-pointer overflow-hidden`}
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <CardHeader>
-                  <div className={`h-12 w-12 sm:h-16 sm:w-16 rounded-2xl bg-gradient-to-br ${feature.color} p-2 sm:p-3 mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 animate-rotate-in delay-${index * 100}`}>
-                    <feature.icon className="h-full w-full text-white" />
+                <CardHeader className="text-center">
+                  <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">
+                    {feature.emoji}
                   </div>
-                  <CardTitle className="text-lg sm:text-xl md:text-2xl group-hover:text-purple-600 transition-colors">{feature.title}</CardTitle>
-                  <CardDescription className="text-sm sm:text-base">
+                  <CardTitle className="text-2xl mb-3 group-hover:text-orange-600 transition-colors">
+                    {feature.title}
+                  </CardTitle>
+                  <CardDescription className="text-base text-gray-600 leading-relaxed">
                     {feature.description}
                   </CardDescription>
                 </CardHeader>
@@ -132,55 +186,134 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* How it Works */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-600 via-blue-600 to-cyan-500 relative overflow-hidden">
-        {/* Additional floating elements */}
-        <div className="absolute top-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl animate-float delay-500"></div>
-        <div className="absolute bottom-10 left-10 w-60 h-60 bg-white/10 rounded-full blur-3xl animate-float delay-1500"></div>
-        
+      {/* How it Works - Storytelling Approach */}
+      <section className="py-20 px-4 bg-gradient-to-br from-orange-50 via-rose-50 to-purple-50 relative overflow-hidden">
         <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16 animate-scale-up">
-            <h2 className="text-5xl font-extrabold mb-4 text-white">How It Works</h2>
-            <p className="text-xl text-white/90 animate-fade-in-up delay-200">Get started in three simple steps</p>
+          <div className="text-center mb-16">
+            <span className="text-orange-600 font-semibold text-sm uppercase tracking-wider">Simple & Easy</span>
+            <h2 className="text-5xl font-extrabold mb-4 text-gray-900 mt-4">Your Journey Starts Here 🚀</h2>
+            <p className="text-xl text-gray-600">Three simple steps to your dream freelance career</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 step: 1,
-                title: 'Connect Wallet',
-                description: 'Connect your MetaMask or WalletConnect wallet. Create your profile as a freelancer or client.',
-                gradient: 'from-pink-500 to-rose-500',
+                title: 'Create Your Profile',
+                description: 'Tell us about yourself, your skills, and what makes you awesome. Add your portfolio and let your work shine!',
+                gradient: 'from-orange-500 to-rose-500',
+                icon: Users,
+                illustration: '👤',
               },
               {
                 step: 2,
-                title: 'Create Contract',
-                description: 'Post jobs or apply to opportunities. Set milestones and lock funds in the escrow contract.',
+                title: 'Find Perfect Projects',
+                description: 'Browse jobs that match your skills and passion. Apply with confidence knowing payments are secure in escrow.',
                 gradient: 'from-blue-500 to-cyan-500',
+                icon: Target,
+                illustration: '🎯',
               },
               {
                 step: 3,
-                title: 'Deliver & Get Paid',
-                description: 'Submit work, get approved, and receive instant payment. Leave reviews to build reputation.',
-                gradient: 'from-purple-500 to-indigo-500',
+                title: 'Get Paid Instantly',
+                description: 'Deliver amazing work, get client approval, and receive payment immediately. Build your reputation with every project!',
+                gradient: 'from-green-500 to-emerald-500',
+                icon: Award,
+                illustration: '💸',
               },
             ].map((item, index) => (
-              <Card 
+              <div 
                 key={index} 
-                className="border-0 shadow-2xl bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all hover:scale-105 animate-slide-in-right overflow-hidden group cursor-pointer"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="relative"
               >
+                {/* Connection Line */}
+                {index < 2 && (
+                  <div className="hidden md:block absolute top-12 left-full w-full h-1 bg-gradient-to-r from-gray-300 to-transparent -z-10"></div>
+                )}
+                
+                <Card className="border-0 shadow-xl bg-white hover:shadow-2xl transition-all hover:scale-105 overflow-hidden group cursor-pointer h-full">
+                  <CardHeader className="text-center pb-6">
+                    {/* Step Number */}
+                    <div className={`h-20 w-20 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center font-bold text-4xl mb-6 text-white shadow-lg mx-auto group-hover:scale-110 transition-transform`}>
+                      {item.step}
+                    </div>
+                    
+                    {/* Illustration */}
+                    <div className="text-7xl mb-4 group-hover:scale-110 transition-transform">
+                      {item.illustration}
+                    </div>
+                    
+                    <CardTitle className="text-2xl text-gray-900 mb-4 group-hover:text-orange-600 transition-colors">
+                      {item.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-gray-600 text-lg leading-relaxed">
+                      {item.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-orange-600 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 justify-center">
+              <MessageCircle className="w-4 h-4" />
+              Real Stories
+            </span>
+            <h2 className="text-5xl font-extrabold mb-4 text-gray-900 mt-4">
+              What Our Community Says 💬
+            </h2>
+            <p className="text-xl text-gray-600">Hear from freelancers and clients who found success</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                name: 'Sarah Johnson',
+                role: 'UI/UX Designer',
+                image: '👩‍💻',
+                quote: "Finally, a platform that values my work! No more worrying about platform fees eating my earnings. I've earned 30% more here!",
+                rating: 5,
+              },
+              {
+                name: 'Michael Chen',
+                role: 'Full Stack Developer',
+                image: '👨‍💻',
+                quote: "The secure escrow gives me peace of mind. I focus on coding, knowing I'll get paid for every milestone I complete.",
+                rating: 5,
+              },
+              {
+                name: 'Emily Rodriguez',
+                role: 'Content Writer',
+                image: '✍️',
+                quote: "I love the flexibility and transparency. Being able to work on my terms while building a verifiable reputation is amazing!",
+                rating: 5,
+              },
+            ].map((testimonial, index) => (
+              <Card key={index} className="border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 bg-gradient-to-br from-white to-gray-50">
                 <CardHeader>
-                  <div className={`h-16 w-16 rounded-full bg-gradient-to-br ${item.gradient} flex items-center justify-center font-bold text-3xl mb-4 text-white shadow-xl animate-scale-up group-hover:animate-heartbeat`}
-                    style={{ animationDelay: `${300 + index * 150}ms` }}
-                  >
-                    {item.step}
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-5xl">{testimonial.image}</div>
+                    <div>
+                      <h3 className="font-bold text-lg text-gray-900">{testimonial.name}</h3>
+                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl text-white group-hover:scale-105 transition-transform">{item.title}</CardTitle>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 text-yellow-500" fill="currentColor" />
+                    ))}
+                  </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-white/90 text-lg">
-                    {item.description}
-                  </p>
+                  <p className="text-gray-700 italic leading-relaxed">"{testimonial.quote}"</p>
                 </CardContent>
               </Card>
             ))}
@@ -188,24 +321,55 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 px-4 bg-gradient-to-b from-purple-50 to-white relative overflow-hidden">
+      {/* CTA with Warmth */}
+      <section className="py-24 px-4 bg-gradient-to-br from-orange-500 via-rose-500 to-purple-600 relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-200 rounded-full blur-3xl opacity-30 animate-float"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-30 animate-float delay-1000"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-float delay-1000"></div>
         
         <div className="container mx-auto text-center relative z-10">
-          <div className="max-w-3xl mx-auto bg-gradient-to-br from-purple-600 to-blue-600 rounded-3xl p-12 shadow-2xl animate-scale-up hover:scale-105 transition-transform duration-500 animate-pulse-glow">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-white animate-fade-in-up">Ready to Get Started?</h2>
-            <p className="text-xl text-white/90 mb-10 animate-fade-in-up delay-200">
-              Join the future of freelancing. No middlemen, no fees, just direct work relationships.
+          <div className="max-w-4xl mx-auto">
+            <div className="text-7xl mb-6 animate-bounce-slow">🎉</div>
+            <h2 className="text-5xl md:text-6xl font-extrabold mb-6 text-white">
+              Ready to Love Your Work Again?
+            </h2>
+            <p className="text-2xl text-white/90 mb-10 leading-relaxed">
+              Join thousands of freelancers who've found freedom, fair pay, and fulfilling work.
+              <span className="block mt-4 font-semibold">Your dream freelance career starts today!</span>
             </p>
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 hover:scale-110 transition-all shadow-xl text-lg px-10 py-6 animate-slide-in-left delay-400 group" asChild>
-              <Link to="/jobs">
-                <Rocket className="mr-2 h-6 w-6 group-hover:animate-wiggle" />
-                Explore Opportunities
-              </Link>
-            </Button>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-orange-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl hover:scale-110 transition-all px-10 py-7 text-xl font-bold group"
+                asChild
+              >
+                <Link to="/jobs" className="flex items-center gap-2">
+                  <Rocket className="w-6 h-6 group-hover:animate-bounce" />
+                  Start Freelancing Now
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Link>
+              </Button>
+              
+              <span className="text-white text-sm">
+                ✨ Free to join • No credit card required
+              </span>
+            </div>
+
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-white/90">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>10,000+ Active Users</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>$2M+ Paid to Freelancers</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-5 h-5" />
+                <span>4.9/5 Average Rating</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
