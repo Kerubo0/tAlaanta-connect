@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAccount } from 'wagmi';
-// TODO: Migrate to Supabase
-// import { collection, query, where, getDocs } from 'firebase/firestore';
-// import { db } from '@/lib/firebase';
+import { supabase } from '../lib/supabase';
 import { Job } from '@/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -118,24 +116,44 @@ export function JobsPage() {
   }, []);
 
   const loadJobs = async () => {
-    if (!db) {
-      setLoading(false);
-      return;
-    }
-
     try {
-      const jobsRef = collection(db, 'jobs');
-      const q = query(jobsRef, where('status', '==', 'open'));
-      const querySnapshot = await getDocs(q);
+      setLoading(true);
       
-      const jobsData: Job[] = [];
-      querySnapshot.forEach((doc) => {
-        jobsData.push({ id: doc.id, ...doc.data() } as Job);
-      });
+      const { data: jobsData, error } = await supabase
+        .from('jobs')
+        .select('*')
+        .eq('status', 'open')
+        .order('created_at', { ascending: false });
       
-      setJobs(jobsData);
+      if (error) {
+        console.error('Error loading jobs from Supabase:', error);
+        setJobs([]);
+        return;
+      }
+      
+      if (jobsData) {
+        // Transform Supabase data to match Job type
+        const transformedJobs: Job[] = jobsData.map(job => ({
+          id: job.id,
+          title: job.title,
+          description: job.description,
+          budget: job.budget,
+          category: job.category,
+          skills: job.skills || [],
+          status: job.status,
+          createdAt: job.created_at,
+          clientId: job.client_id,
+          clientAddress: job.client_address || '',
+          duration: job.duration,
+          proposals: job.proposals || 0,
+          featured: job.featured || false,
+        }));
+        
+        setJobs(transformedJobs);
+      }
     } catch (error) {
       console.error('Error loading jobs:', error);
+      setJobs([]);
     } finally {
       setLoading(false);
     }
