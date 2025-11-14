@@ -1,0 +1,11 @@
+{
+  "network": "base-sepolia-testnet",
+  "chainId": 84532,
+  "deployer": "0x79b62F1dca83Db3Ddc84e3947175623372a3Afa1",
+  "timestamp": "2025-11-14T02:15:17.365Z",
+  "contracts": {
+    "JobEscrow": "0x71D384235f4AF6653d54A05178DD18F97FFAB799",
+    "FreelanceEscrow": "0x0Fb22c9f51d7C990ab6EE10a955E51FC9a4adb9B",
+    "ReviewSystem": "0x087D6d697FbcF96714aBB2Bcf89773e640095aD4"
+  }
+}
