@@ -1,6 +1,3 @@
-# 🎉 Firebase to Supabase Migration Complete!
-
-## ✅ What's Been Done
 
 ### 1. **Installed Supabase**
 - Added `@supabase/supabase-js` package
